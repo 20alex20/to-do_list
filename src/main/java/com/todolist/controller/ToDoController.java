@@ -52,13 +52,13 @@ public class ToDoController {
 	}
 	
 	@GetMapping("/editToDoItem/{id}")
-	public String editToDoItem(@PathVariable Long id,Model model) {
-		model.addAttribute("todo",service.getToDoItemById(id));
+	public String editToDoItem(@PathVariable Long id, Model model) {
+		model.addAttribute("todo", service.getToDoItemById(id));
 		return "EditToDoItem";
 	}
 
-	@PostMapping("/editSaveTDoItem")
-	public String editSaveTDoItem(ToDo todo, RedirectAttributes redirectAttributes) {
+	@PostMapping("/editSaveToDoItem")
+	public String editSaveToDoItem(ToDo todo, RedirectAttributes redirectAttributes) {
 		if(service.saveOrUpdateToDoItem(todo)) {
 			redirectAttributes.addFlashAttribute("message", "Edit success");
 			return "redirect:/viewToDoList"; 
