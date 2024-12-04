@@ -15,9 +15,9 @@ public class ToDoService {
 	@Autowired
 	IToDoRepo repo;
 	
-	public List<ToDo> getAllToDoItems(){
+	public List<ToDo> getAllToDoItems() {
 		ArrayList<ToDo> todoList = new ArrayList<>();
-		repo.findAll().forEach(todo-> todoList.add(todo));
+		repo.findAll().forEach(todo -> todoList.add(todo));
 		return todoList;
 	}
 	

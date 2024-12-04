@@ -26,7 +26,7 @@ public class ToDoController {
 	}
 
 	@GetMapping("/updateToDoStatus/{id}")
-	public String updateToDoStatus(@PathVariable Long id,RedirectAttributes redirectAttributes) {
+	public String updateToDoStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		if(service.updateStatus(id)) {
 			redirectAttributes.addFlashAttribute("message", "Update success");
 			return "redirect:/viewToDoList";
@@ -52,19 +52,19 @@ public class ToDoController {
 	}
 	
 	@GetMapping("/editToDoItem/{id}")
-	public String editToDoItem(@PathVariable Long id,Model model) {
-		model.addAttribute("todo",service.getToDoItemById(id));
+	public String editToDoItem(@PathVariable Long id, Model model) {
+		model.addAttribute("todo", service.getToDoItemById(id));
 		return "EditToDoItem";
 	}
 
-	@PostMapping("/editSaveTDoItem")
-	public String editSaveTDoItem(ToDo todo, RedirectAttributes redirectAttributes) {
+	@PostMapping("/editSaveToDoItem")
+	public String editSaveToDoItem(ToDo todo, RedirectAttributes redirectAttributes) {
 		if(service.saveOrUpdateToDoItem(todo)) {
 			redirectAttributes.addFlashAttribute("message", "Edit success");
 			return "redirect:/viewToDoList"; 
 		}
 		redirectAttributes.addFlashAttribute("message", "Edit failure");
-		return "redirect:/editToDoItem/"+todo.getId();
+		return "redirect:/editToDoItem/" + todo.getId();
 	}
 	
 	@GetMapping("/deleteToDoItem/{id}")
